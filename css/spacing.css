@@ -75,12 +75,30 @@ table.tabla3, .tabla3 th, .tabla3 td{
     background-color: lightgray;
 }
 
+table.tabla4 {
+  width: 50%;
+}
 
+.tabla4 th {
+  background: #5B9BD4;
+  border-bottom: 5px solid white;
+}
 
+.tabla4 tr{
+  background: #D1DDEE;
+    font-family:  "Arial", sans-serif;
+}
 
+.tabla4 tr:nth-child(even) {
+  background: #E9EEF6;
+}
 
-
-
+.tabla4 td{
+    border: 2px solid white;
+}
+.tabla4 tr:hover {
+  background: yellow;
+}
 
 
 
