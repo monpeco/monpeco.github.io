@@ -7,17 +7,18 @@
 <body>
 <header>
 	<h1>GDB - GNU Debugger</h1>
+
 </header>
-<nav>
-  <header>
-    Navigation menu
-  </header>
-	<ul>
-		<li><span>Blog</span></li>
-		<li><a href="">About</a></li>
-		<li><a href="">Contact</a></li>
-	</ul>
-</nav>
+    <nav>
+        <table>
+            <tr><th><a href="#que-debo-saber">¿Que debo saber?</a></th></tr>
+            <tr><th><a href="#ejecutar-gdb">Ejecutar gdb</a></th></tr>
+            <tr><th><a href="#primeros-pasos">Primeros pasos con gdb</a></th></tr>
+            <tr><th><a href="#funciones-basicas">Funciones básicas gdb</a></th></tr>
+        
+        </table>
+        
+    </nav>
 <section>
   <header>    
     <h2>GDB</h2>
@@ -30,7 +31,7 @@
   </header>
   <article>
     <header>
-      <h2><a href="">¿Que debo saber?</a></h2>
+      <h2><a href="" id="que-debo-saber">¿Que debo saber?</a></h2>
     </header>
     <p>
 	En la ayuda del gdb se refieren al programa a depurar como <strong>inferior</strong>, por lo que cuando se tope con este término en busquedas o en la documentación, se está refiriendo al programa al que se le va a hacer Debug.<br><br>
@@ -38,35 +39,61 @@
 
     </p>
     <figure>
-    <img src="image/gdb-interface.png" alt="Imagen de la interface GDB" width=750/>
+    <img src="http://www.dedoimedo.com/images/computers_years/2012_1/linux-hack-4-gdb-tui.jpg" alt="Imagen de la interface GDB" width=500/>
     <figcaption>
-        Fig. 1 : Muestra de la interface GDB en plataforma Linux
+        Fig. 1 : Muestra de la interface GDB
     </figcaption>
     </figure>
       
   </article>
   <article>
     <header>
-        <h2><a href="">Ejecutar gdb</a></h2>
+        <h2><a href="" id="ejecutar-gdb">Ejecutar gdb</a></h2>
     </header>
-        <p>Para ejecutar el gdb, debemos ubicarnos en el directorio donde está el ejecutable a ser sometido al Debugging, y estando en ese directorio se debe ejecutar:<br><br>
-        gdb -tui &lt;ejecutable&gt; <br><br>
-        La opción "-tui" activa la interface de Usuario, la que muestra la pantalla dividida en dos secciones (y puede ser ampliada a más), mostrando el código fuente y el interprete de comandos.
+        <p>Para ejecutar el gdb, debemos ubicarnos en el directorio donde está el ejecutable a ser sometido al Debugging, y estando en ese directorio se debe ejecutar:</p>
+        <ul>
+            <li><strong>gdb -tui &lt;ejecutable&gt;</strong></li><br>
+        </ul>
+        <p>La opción "-tui" activa la interface de Usuario, la que muestra la pantalla dividida en dos secciones (y puede ser ampliada a más), mostrando el código fuente y el interprete de comandos.
         </p>
   </article>
-	
+ <article>
+    <header>
+        <h2><a href="" id="primeros-pasos">Primeros pasos con gdb</a></h2>
+    </header>
+        <p>Lo primero que se debe saber de gdb es como iniciar un programa, como detenerlo y los diferentes modos de ejecución.</p>
+        <ul>
+            <li><strong>run (r) &lt;parametros&gt; :</strong> inicia la ejecución del Debug del programa. Esto quiere decir que se va a ejecutar hasta el final del programa o hasta encontrar un Breakpoint. Se debe indicar luego del run todos los parametros que consume el programa.</li>
+            <li><strong>step (s) :</strong> Una vez alcanzado un Breakpoint, se puede ejecutar este comando para ejecutar la linea actual (donde se encuetra detenido el programa). Esto implica que únicamente se va a ejecutar la linea actual y ninguna otra, y el cursor del programa se va a ubicar en la linea de más abajo. Si la ejecución de la linea es la llamada a una función, gdb va a invocar a dicha función sin ir a la implementación de la misma.</li>
+            <li><strong>next (n):</strong> Funciona de manera similar a step, ejecuta únicamente la linea de código en donde está detenido el cursor, con la diferencia que si la ejecución de dicha linea es una llamada a una función, gdb va a ir a la primera linea dentro de la definición de la función (en lugar de solamente llamar la función y retornar su valor).</li>
+            <li><c>continue (c):</strong> Reinicia la ejecución del Debug del programa. es decir, que si estamos detenidos en una linea en particular, con esta instrucción estamos indicando que se continúe con el Debug del programa hasta el final o hasta encontrar un Breakpoint.</li>
+            <li><strong>quit (q):</strong> Termina la ejecución del gdb, y por lo tanto, finaliza el Debug que se está haciendo sobre el ejecutable.</li>
+        </ul>
+        
+  </article>
+
+ <article>
+    <header>
+        <h2><a href="" id="funciones-basicas">Funciones básicas gdb</a></h2>
+    </header>
+        <p>Después de saber iniciar el programa, es necesario aprender como colocar Breakpoint, como quitarlos, como ver el contenido de las variables, inclusive como asignarle un valor a una variable durante el proceso de Debug.</p>
+        <ul>
+            <li><strong>break &lt;numero_linea&gt; (b):</strong> Establece un Breakpoint (o punto de parada) en la ejecución del programa. Debido a la importancia de este punto lo detallaremos más adelante.</li>
+            <li><strong>info breakpoints:</strong> Muestra todos los Breakpoint agregados al programa.</li>
+            <li><strong>clear &lt;numero_linea&gt;: </strong>sirve para remover un Breakpoint en una linea determinada. Ejemplo: "clear 45" remueve el Breakpoint ubicado en la linea 45. </li>
+            <li><strong>delete &lt;numero_breakpoint&gt;: </strong> sirve para remover un Breakpoint por su número. Ejemplo: "delete 1" remueve el Breakpoint número 1 (el primer Breakpoint agregado al programa).</li>
+            <li><strong>print &lt;nombre_variable&gt; (p):</strong> Muestra el contenido de una variable, una posición en un array, el resultado de una función sobre una variable, entre otros.</li>
+            <li><strong>set var &lt;nombre_variable=valor&gt;:</strong>Asigna el valor que va a tener una variable. A partir de que se asigna el valor de la variable, el programa va a continuar su ejecución considerando el valor recién asignado.</li>
+            
+
+        
+        </ul>
+        
+  </article>    
+    
 </section>
 
-<aside>
-	<h2>Palabras Relacionadas</h2>
-	<ul class="tag-cloud">
-		<li><a href="https://www.gnu.org/software/ddd/" rel="tag" class="w2" target="_blank">Data Display Debugger</a></li>
-		<li><a href="https://es.wikipedia.org/wiki/Interfaz_de_l%C3%ADnea_de_comandos" rel="tag" class="w8" target="_blank">línea de comandos</a></li>
-		<li><a href="https://es.wikipedia.org/wiki/Depurador" rel="tag" class="w3" target="_blank">Depurador</a></li>
-		<li><a href="https://www.cs.cmu.edu/~gilpin/tutorial/" rel="tag" class="w6" target="_blank">Debugging Under Unix</a></li>
 
-	</ul>
-</aside>
 <footer>
 	<p>Alejandro Montilla - Última modificación: 19 Mayo 2016</p>
 </footer>
