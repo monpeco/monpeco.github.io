@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GDB - GNU Debugger</title>
+    <link href="css/default.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+	<h1>GDB - GNU Debugger</h1>
+</header>
+<nav>
+  <header>
+    Navigation menu
+  </header>
+	<ul>
+		<li><span>Blog</span></li>
+		<li><a href="">About</a></li>
+		<li><a href="">Contact</a></li>
+	</ul>
+</nav>
+<section>
+  <header>    
+    <h2>GDB</h2>
+    Según Wikipedia, GDB es:<br><br>
+    <quoteblock>Es un depurador portable que se puede utilizar en varias plataformas <strong>Unix</strong> y funciona para varios lenguajes de programación como <strong>C</strong>, C++ y Fortran. GDB fue escrito por Richard Stallman en 1986. GDB es software libre distribuido bajo la licencia GPL.<br><br>
+
+    GDB ofrece la posibilidad de <strong>trazar y modificar la ejecución de un programa</strong>. El usuario puede <strong>controlar y alterar los valores de las variables internas del programa</strong>.<br><br>
+
+    GDB no contiene su propia interfaz gráfica de usuario y por defecto se controla mediante una interfaz de línea de comandos. Existen diversos front-ends que han sido diseñados para GDB, como Data Display Debugger, GDBtk/Insight y el «modo GUD» en Emacs.</quoteblock>
+  </header>
+  <article>
+    <header>
+      <h2><a href="">¿Que debo saber?</a></h2>
+    </header>
+    <p>
+	En la ayuda del gdb se refieren al programa a depurar como <strong>inferior</strong>, por lo que cuando se tope con este término en busquedas o en la documentación, se está refiriendo al programa al que se le va a hacer Debug.<br><br>
+	Muchos de los comandos gdb tienen abreviaciones, por ejemplo, "p" es la abreviación del comando "print". Para indicar cual es la abreviación del comando, se va a colocar entre paréntesis al lado del nombre del comando.
+
+    </p>
+    <figure>
+    <img src="image/gdb-interface.png" alt="Imagen de la interface GDB" width=750/>
+    <figcaption>
+        Fig. 1 : Muestra de la interface GDB en plataforma Linux
+    </figcaption>
+    </figure>
+      
+  </article>
+  <article>
+    <header>
+        <h2><a href="">Ejecutar gdb</a></h2>
+    </header>
+        <p>Para ejecutar el gdb, debemos ubicarnos en el directorio donde está el ejecutable a ser sometido al Debugging, y estando en ese directorio se debe ejecutar:<br><br>
+        gdb -tui &lt;ejecutable&gt; <br><br>
+        La opción "-tui" activa la interface de Usuario, la que muestra la pantalla dividida en dos secciones (y puede ser ampliada a más), mostrando el código fuente y el interprete de comandos.
+        </p>
+  </article>
+	
+</section>
+
+<aside>
+	<h2>Palabras Relacionadas</h2>
+	<ul class="tag-cloud">
+		<li><a href="https://www.gnu.org/software/ddd/" rel="tag" class="w2" target="_blank">Data Display Debugger</a></li>
+		<li><a href="https://es.wikipedia.org/wiki/Interfaz_de_l%C3%ADnea_de_comandos" rel="tag" class="w8" target="_blank">línea de comandos</a></li>
+		<li><a href="https://es.wikipedia.org/wiki/Depurador" rel="tag" class="w3" target="_blank">Depurador</a></li>
+		<li><a href="https://www.cs.cmu.edu/~gilpin/tutorial/" rel="tag" class="w6" target="_blank">Debugging Under Unix</a></li>
+
+	</ul>
+</aside>
+<footer>
+	<p>Alejandro Montilla - Última modificación: 19 Mayo 2016</p>
+</footer>
+</body>
+</html>
