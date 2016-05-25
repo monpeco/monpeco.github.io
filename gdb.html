@@ -15,9 +15,10 @@
             <tr><th><a href="#ejecutar-gdb">Ejecutar gdb</a></th></tr>
             <tr><th><a href="#primeros-pasos">Primeros pasos con gdb</a></th></tr>
             <tr><th><a href="#funciones-basicas">Funciones básicas gdb</a></th></tr>
-        
+            <tr><th><a href="#imprimir-con-print">Funciones básicas gdb</a></th></tr>
+            <tr><th><a href="#break">Funciones básicas gdb</a></th></tr>
+            <tr><th><a href="#gdb-con-archivo-core">Funciones básicas gdb</a></th></tr>
         </table>
-        
     </nav>
 <section>
   <header>    
@@ -84,18 +85,48 @@
             <li><strong>delete &lt;numero_breakpoint&gt;: </strong> sirve para remover un Breakpoint por su número. Ejemplo: "delete 1" remueve el Breakpoint número 1 (el primer Breakpoint agregado al programa).</li>
             <li><strong>print &lt;nombre_variable&gt; (p):</strong> Muestra el contenido de una variable, una posición en un array, el resultado de una función sobre una variable, entre otros.</li>
             <li><strong>set var &lt;nombre_variable=valor&gt;:</strong>Asigna el valor que va a tener una variable. A partir de que se asigna el valor de la variable, el programa va a continuar su ejecución considerando el valor recién asignado.</li>
-            
-
-        
         </ul>
-        
-  </article>    
-    
+  </article> 
+  
+  <article>
+    <header>
+        <h2><a href="" id="imprimir-con-print">Imprimir con print</a></h2>
+    </header>
+        <p>Utilizado para imprimir el valor que tiene una variable en un momento dado de la ejecución.</p>
+        <p>En algunos casos, cuando el string sea muy largo, es necesario eliminar el limite de impresión de variables, lo cual se hace con:</p>
+        <ul>
+            <li><strong>set print elements 0</strong> </li>
+        </ul>
+   </article>    
 </section>
 
+ <article>
+    <header>
+        <h2><a href="" id="break">break</a></h2>
+    </header>
+        <p>Una de las instrucciones más importantes, se encarga de colocar los Breakpoints (o puntos de interrupción) del programa. Estos puntos de interrupción se introducen en el programa para evaluar el estado del programa en cierto momento, particularmente se utiliza para evaluar el contenido de variables.</p>
+        <p>Para colocar Breakpoints, existen varios métodos. A continuación se presentan algunos:</p>
+        <ul>
+            <li><strong>break &lt;numero_linea&gt; (b):</strong> Este coloca un Breakpoint en la linea especificada del programa que contiene el main.</li>
+            <li><strong>break &lt;funcion&gt; (b):</strong> Coloca un Breakpoint en la primera linea de la implementación de la función indicada. Es importante aclarar que el Breakpoint se va a colocar en la definición de la función, no en donde es llamada la función.</li>
+            <li><strong>break &lt;archivo:numero_linea&gt; (b):</strong> Coloca un Breakpoint en la linea indicada para el archivo indicado. Este formato es particularmente útil cuando se desea colocar un Breakpoint en un archivo que no contiene el main, por ejemplo un archivo *.pc.</li>
+            <li><strong>break &lt;archivo:funcion&gt; (b):</strong> Coloca un Breakpoint en la linea indicada para el archivo indicado. Formato de similar utilidad al anterior.</li>
+            </ul>
+  </article> 
 
+ <article>
+    <header>
+        <h2><a href="" id="gdb-con-archivo-core">Usos de gdb con archivo core</a></h2>
+    </header>
+        <p>Después de saber iniciar el programa, es necesario aprender como colocar Breakpoint, como quitarlos, como ver el contenido de las variables, inclusive como asignarle un valor a una variable durante el proceso de Debug.</p>
+        <ul>
+            <li>Se deben verificar los permisos de escritura de la carpeta donde está el ejecutable.</li>
+            <li>Se debe establecer el limite del archivo core a ilimitado con la ejecución de:<strong>ulimit -c unlimited</strong></li>
+            <li>Se debe ejecutar de la siguiente manera: <strong>gdb -xdb -tui &lt;nomrbe_ejecutable&gt; &lt;archivo_core&gt;</strong></li>
+            </ul>
+  </article> 
 <footer>
-	<p>Alejandro Montilla - Última modificación: 19 Mayo 2016</p>
+	<p>Alejandro Montilla - Última modificación: 25 Mayo 2016</p>
 </footer>
 </body>
 </html>
