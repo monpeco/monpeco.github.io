@@ -18,6 +18,8 @@
             <tr><th><a href="#imprimir-con-print">Imprimir con print</a></th></tr>
             <tr><th><a href="#break">break</a></th></tr>
             <tr><th><a href="#gdb-con-archivo-core">Usos de gdb con archivo core</a></th></tr>
+            <tr><th><a href="#seguimiento-procesos-hijos">Seguimiento de procesos hijos</a></th></tr>
+            
         </table>
     </nav>
 <section>
@@ -125,12 +127,23 @@
             <li>Para listar la pila de ejecución: <strong>backtrace (bt)</strong>. Este comando imprime en que función se ha quedado la ejecución, es decir, muestra todas las funciones anidadas a las que se ha hecho llamado en la ejecución del programa.</li>
         </ul>
   </article>    
-   
+
+  <article>
+    <header>
+        <h2><a href="" id="seguimiento-procesos-hijos">Seguimiento de procesos hijos</a></h2>
+    </header>
+        <p>Cuando se hace el debug de un programa que tiene proceso hijos (con la instrucción fork), el GDB por defecto sigue al proceso padre.
+        Esto se puede cambiar, mediante el seteo de la siguiente instrucción:</p>
+        <ul>
+            <li>set follow-fork-mode child</li>
+        </ul>
+        <p>Este seteo es válido solamente en plataformas modernas, especificamente es soportado por kernel version 2.5.46 y superiores.</p>        
+  </article>      
 </section>
 
 
 <footer>
-	<p>Alejandro Montilla - Última modificación: 01 Julio 2016</p>
+	<p>Alejandro Montilla - Última modificación: 13 Julio 2016</p>
 </footer>
 </body>
 </html>
